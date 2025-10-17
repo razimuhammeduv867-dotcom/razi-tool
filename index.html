@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Razi’s Financial Helper</title>
+  <style>
+    body {
+      background-color: #f5f5f5;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 40px;
+    }
+    h1 {
+      color: #1e90ff;
+    }
+    input {
+      padding: 10px;
+      font-size: 18px;
+      margin: 8px;
+      border: 2px solid #1e90ff;
+      border-radius: 8px;
+      width: 200px;
+      text-align: center;
+    }
+    button {
+      background-color: #1e90ff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    button:hover {
+      background-color: #ff4500;
+    }
+    p {
+      font-size: 20px;
+      color: #006400;
+    }
+  </style>
+</head>
+<body>
+  <h1>💰 Razi’s Financial Helper</h1>
+  <p>Enter your financial details below:</p>
+
+  <input type="number" id="income" placeholder="Monthly Income"><br>
+  <input type="number" id="expenses" placeholder="Monthly Expenses"><br>
+  <button onclick="calculateBalance()">Calculate Balance</button>
+
+  <p id="result"></p>
+
+  <script>
+    function calculateBalance() {
+      var income = parseFloat(document.getElementById('income').value);
+      var expenses = parseFloat(document.getElementById('expenses').value);
+      
+      if (isNaN(income) || isNaN(expenses)) {
+        document.getElementById('result').innerText = "⚠️ Please enter both income and expenses!";
+        return;
+      }
+
+      var balance = income - expenses;
+      if (balance >= 0) {
+        document.getElementById('result').innerText = "✅ You saved ₹" + balance.toFixed(2) + " this month!";
+      } else {
+        document.getElementById('result').innerText = "❌ You overspent by ₹" + Math.abs(balance).toFixed(2);
+      }
+    }
+  </script>
+</body>
+</html>
